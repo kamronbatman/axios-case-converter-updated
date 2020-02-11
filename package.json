@@ -1,6 +1,6 @@
 {
-  "name": "axios-case-converter",
-  "version": "0.3.1",
+  "name": "axios-case-converter-updated",
+  "version": "0.4.0",
   "main": "lib/index.js",
   "module": "es/index.js",
   "scripts": {
@@ -11,12 +11,13 @@
     "build:cjs": "cross-env BABEL_ENV=cjs babel src --out-dir lib",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
     "build": "run-p build:*",
+    "prepare": "install-peers",
     "prepublish": "in-publish && (git diff --no-ext-diff --quiet --exit-code src .gitignore package.json README.md LICENSE || (echo \"Please commit changes!\" && false)) && npm test && npm run build || not-in-publish"
   },
   "description": "Axios transformer/interceptor that converts snake_case/camelCase",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mpyw/axios-interceptor-change-case.git"
+    "url": "git+https://github.com/kamronbatman/axios-interceptor-change-case.git"
   },
   "keywords": [
     "axios",
@@ -26,36 +27,38 @@
     "case",
     "convert"
   ],
-  "author": "mpyw <ryosuke_i_628@yahoo.co.jp>",
+  "author": "mpyw <ryosuke_i_628@yahoo.co.jp>, Kamron Batman <3953314+kamronbatman@users.noreply.github.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mpyw/axios-interceptor-change-case/issues"
   },
   "homepage": "https://github.com/mpyw/axios-interceptor-change-case#readme",
-  "devDependencies": {
-    "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.0.0",
-    "@babel/node": "^7.0.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
-    "@babel/plugin-transform-runtime": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "axios": "^0.18.0",
-    "axios-mock-adapter": "^1.9.0",
-    "babel-eslint": "^10.0.1",
-    "cross-env": "^5.0.5",
-    "eslint": "^5.7.0",
-    "eslint-plugin-react": "^7.3.0",
-    "in-publish": "^2.0.0",
-    "npm-run-all": "^4.1.1",
-    "redux": "^4.0.1",
-    "tap-spec": "^5.0.0",
-    "tape": "^4.8.0",
-    "utils-copy-error": "^1.0.1"
+  "peerDependencies": {
+    "axios": "^0.19.2",
+    "axios-mock-adapter": "^1.17.0"
   },
   "dependencies": {
-    "@babel/runtime": "^7.0.0",
     "camel-case": "^4.1.1",
     "header-case": "^2.0.3",
     "snake-case": "^3.0.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/node": "^7.8.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/runtime": "^7.8.4",
+    "babel-eslint": "^10.0.3",
+    "cross-env": "^7.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "in-publish": "^2.0.0",
+    "install-peers-cli": "^2.2.0",
+    "npm-run-all": "^4.1.5",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.13.0"
   }
 }

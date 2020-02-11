@@ -1,32 +1,42 @@
-import { headerCase as ccHeader } from 'header-case'
-import { snake, camel, header } from './transform'
+import { headerCase as ccHeader } from 'header-case';
+import { snake, camel, header } from './transform';
 
-export const snakeParams = config => {
+const standardRequests = ['common', 'delete', 'get', 'head', 'post', 'put', 'patch'];
+
+export const snakeParams = (config) => {
   if (config.params) {
-    config.params = snake(config.params)
+    // eslint-disable-next-line no-param-reassign
+    config.params = snake(config.params);
   }
-  return config
-}
+  return config;
+};
+
 export const snakeRequest = (data, headers) => {
-  for (const [key, value] of Object.entries(headers)) {
-    header(value, true)
-    if (!['common', 'delete', 'get', 'head', 'post', 'put', 'patch'].includes(key)) {
-      delete headers[key]
-      headers[ccHeader(key)] = value
+  Object.entries(headers).forEach(([key, value]) => {
+    header(value, true);
+    if (!standardRequests.includes(key)) {
+      /* eslint-disable no-param-reassign */
+      delete headers[key];
+      headers[ccHeader(key)] = value;
+      /* eslint-enable */
     }
-  }
-  return snake(data)
-}
+  });
+
+  return snake(data);
+};
+
 export const camelResponse = (data, headers) => {
-  camel(headers, true)
-  return camel(data)
-}
+  camel(headers, true);
+  return camel(data);
+};
 
-const applyConverters = axios => {
-  axios.defaults.transformRequest = [snakeRequest, ...axios.defaults.transformRequest]
-  axios.defaults.transformResponse = [...axios.defaults.transformResponse, camelResponse]
-  axios.interceptors.request.use(snakeParams)
-  return axios
-}
+const applyConverters = (axios) => {
+  /* eslint-disable no-param-reassign */
+  axios.defaults.transformRequest = [snakeRequest, ...axios.defaults.transformRequest];
+  axios.defaults.transformResponse = [...axios.defaults.transformResponse, camelResponse];
+  axios.interceptors.request.use(snakeParams);
+  /* eslint-enable */
+  return axios;
+};
 
-export default applyConverters
+export default applyConverters;

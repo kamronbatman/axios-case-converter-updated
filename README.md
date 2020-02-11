@@ -1,7 +1,7 @@
-# axios-case-converter
+# axios-case-converter-updated
 
 [![npm version](https://badge.fury.io/js/axios-case-converter.svg)](https://badge.fury.io/js/axios-case-converter)
-[![Build Status](https://travis-ci.com/mpyw/axios-case-converter.svg?branch=master)](https://travis-ci.com/mpyw/axios-case-converter)
+[![Build Status](https://travis-ci.com/kamronbatman/axios-case-converter-update.svg?branch=master)](https://travis-ci.com/kamronbatman/axios-case-converter-updated)
 
 Axios transformer/interceptor that converts _snake_case/camelCase_
 
@@ -15,7 +15,7 @@ Axios transformer/interceptor that converts _snake_case/camelCase_
 You can fully use _camelCase_.
 
 ```js
-import applyConverters from 'axios-case-converter';
+import applyConverters from 'axios-case-converter-updated';
 import axios from 'axios';
 
 (async () => {

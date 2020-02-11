@@ -1,12 +1,4 @@
 {
-  "env": {
-    "cjs": {
-      "presets": [["@babel/preset-env"]],
-      "plugins": ["@babel/transform-runtime", ["@babel/plugin-proposal-object-rest-spread", { "useBuiltIns": true }]]
-    },
-    "es": {
-      "presets": [["@babel/preset-env", { "modules": false }]],
-      "plugins": ["@babel/transform-runtime", ["@babel/plugin-proposal-object-rest-spread", { "useBuiltIns": true }]]
-    }
-  }
+  "presets": [["@babel/env"]],
+  "plugins": [["@babel/plugin-proposal-object-rest-spread", { "useBuiltIns": true }]]
 }
