@@ -6,13 +6,13 @@
   "scripts": {
     "lint-src": "eslint src",
     "lint-examples": "eslint examples",
-    "test": "npm run lint-src && cross-env BABEL_ENV=cjs babel-node test/index.js | tap-spec",
+    "test": "yarn lint-src && cross-env BABEL_ENV=cjs babel-node test/index.js | tap-spec",
     "test-without-lint": "cross-env BABEL_ENV=cjs babel-node test/index.js | tap-spec",
     "build:cjs": "cross-env BABEL_ENV=cjs babel src --out-dir lib",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
     "build": "run-p build:*",
     "prepare": "install-peers",
-    "prepublish": "in-publish && (git diff --no-ext-diff --quiet --exit-code src .gitignore package.json README.md LICENSE || (echo \"Please commit changes!\" && false)) && npm test && npm run build || not-in-publish"
+    "prepublish": "in-publish && (git diff --no-ext-diff --quiet --exit-code src .gitignore package.json README.md LICENSE || (echo \"Please commit changes!\" && false)) && yarn install && yarn test && yarn build || not-in-publish"
   },
   "description": "Axios transformer/interceptor that converts snake_case/camelCase",
   "repository": {
